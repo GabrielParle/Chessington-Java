@@ -4,7 +4,13 @@ import training.chessington.model.pieces.*;
 
 public class Board {
 
+
     private Piece[][] board = new Piece[8][8];
+
+    public Piece[][] getBoard() {
+        return board;
+    }
+
 
     private Board() {
     }
@@ -44,9 +50,12 @@ public class Board {
     public void move(Coordinates from, Coordinates to) {
         board[to.getRow()][to.getCol()] = board[from.getRow()][from.getCol()];
         board[from.getRow()][from.getCol()] = null;
+        board[to.getRow()][to.getCol()].setHasMoved(true);
     }
 
     public void placePiece(Coordinates coords, Piece piece) {
+
         board[coords.getRow()][coords.getCol()] = piece;
+
     }
 }
